@@ -61,7 +61,7 @@ Right now, our code should still work the same, so what's the point of $q? Why a
 Well imagine you wanted to make a change to your data before you sent it over to the controller. For instance, currently we have this happening in our controller:
 
 ``` javascript
-$scope.users= mainService.getUsers().then(function(dataFromService) {
+mainService.getUsers().then(function(dataFromService) {
   $scope.users = dataFromService.data.data;
 });
 ```
