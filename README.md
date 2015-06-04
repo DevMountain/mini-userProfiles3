@@ -117,7 +117,7 @@ app.service('mainService', function($http, $q) {
         method: 'GET',
         url: 'http://reqr.es/api/users?page=1'
     }).then(function(response) {
-      parsedResponse = response.data.data
+      var parsedResponse = response.data.data
       for(var i = 0; i < parsedResponse.length; i++) {
         parsedResponse[i].first_name = 'Ralf'
       }
