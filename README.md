@@ -9,9 +9,7 @@ $q allows us to hold off on sending our data over until we're ready. It's fairly
 ## Step 1 Our Service
 - Inject $q into the service
 ``` javascript
-var app = angular.module('userProfiles');
-
-app.service('mainService', function($http, $q) {
+angular.module('userProfiles').service('mainService', function($http, $q) {
   this.getUsers = function() {
     return $http({
         method: 'GET',
@@ -24,9 +22,7 @@ app.service('mainService', function($http, $q) {
 - Once injected we can begin using it by adding a deffered variable to handle it
 
 ``` javascript
-var app = angular.module('userProfiles');
-
-app.service('mainService', function($http, $q) {
+angular.module('userProfiles').service('mainService', function($http, $q) {
   this.getUsers = function() {
     var deferred = $q.defer();
     return $http({
@@ -40,9 +36,7 @@ app.service('mainService', function($http, $q) {
 - Now let's add a promise to our service
 
 ``` javascript
-var app = angular.module('userProfiles');
-
-app.service('mainService', function($http, $q) {
+angular.module('userProfiles').service('mainService', function($http, $q) {
   this.getUsers = function() {
     var deferred = $q.defer();
     $http({
@@ -69,9 +63,7 @@ mainService.getUsers().then(function(dataFromService) {
 dataFromService.data.data??? We are loading a lot of unnecessary data into our $scope object. Rather than filter it out in our controller we can use $q to filter it out as we pull it through our service.
 
 ``` javascript
-var app = angular.module('userProfiles');
-
-app.service('mainService', function($http, $q) {
+angular.module('userProfiles').service('mainService', function($http, $q) {
   this.getUsers = function() {
     var deferred = $q.defer();
     $http({
@@ -89,9 +81,7 @@ app.service('mainService', function($http, $q) {
 Now our controller can just take what it's given and not have to filter anything out. Like so:
 
 ``` javascript
-var app = angular.module('userProfiles');
-
-app.controller('MainController', function($scope, mainService) {
+angular.module('userProfiles').controller('MainController', function($scope, mainService) {
   $scope.getUsers = function() {
     mainService.getUsers().then(function(dataFromService) {
       $scope.users = dataFromService;
@@ -108,9 +98,7 @@ Cool stuff!
 Let's go ahead and do something a little less relevant, but more fun. Let's change everyones first_name in the service to Ralf.
 
 ``` javascript
-var app = angular.module('userProfiles');
-
-app.service('mainService', function($http, $q) {
+angular.module('userProfiles').service('mainService', function($http, $q) {
   this.getUsers = function() {
     var deferred = $q.defer();
     $http({
